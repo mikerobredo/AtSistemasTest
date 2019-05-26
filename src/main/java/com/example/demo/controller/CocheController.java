@@ -7,9 +7,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.dto.CocheDto;
 
-
-
-
 @RestController
 @RequestMapping("/coche")
 public class CocheController {
@@ -19,7 +16,6 @@ public class CocheController {
 	public CocheDto findOne(@PathVariable("id")Integer id)
 	{
 		CocheDto c1= new  CocheDto("2232","verde","opel","kadet");
-		
 		return c1;
 
 	}
