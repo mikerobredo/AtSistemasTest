@@ -36,9 +36,9 @@ public class Coche {
 	private String marca;
 	private String modelo;
 	
-	@OneToMany
+	@OneToMany(mappedBy="cocheAlquilado")
 	private List<Alquiler> alquileres= new ArrayList<Alquiler>();
-	@ManyToMany
+	@ManyToMany(mappedBy="coches")
 	private Set<Tarifa> tarifas = new HashSet<>();
 	
 }

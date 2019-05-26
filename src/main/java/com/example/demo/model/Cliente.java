@@ -21,7 +21,7 @@ public class Cliente {
 	private String apellido;
 	private String dni;
 	
-	@OneToMany
+	@OneToMany(mappedBy="clienteAlquilado")
 	private List<Alquiler> alquileres = new ArrayList<Alquiler>();
 	
 
