@@ -7,6 +7,9 @@ import lombok.Data;
 @AllArgsConstructor
 public class CocheDto {
 	
+	public CocheDto() {
+		// TODO Auto-generated constructor stub
+	}
 	private String matricula;
 	private String color;
 	private String marca;
