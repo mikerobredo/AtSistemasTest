@@ -38,36 +38,37 @@ public class CocheController {
 		{
 			lcDto.add(servicioCoches.toDto(c));
 		}
-		return  lcDto;
-		
+		return  lcDto;		
 	}
 	
 	@GetMapping("/{id}")
-	public Coche busca(@PathVariable("id")String id)
+	public CocheDto busca(@PathVariable("id")String id)
 	{	
-		return cocheControlador.getOne(id);
+		Coche c1= cocheControlador.getOne(id);
+		CocheDto c2= servicioCoches.toDto(c1);
+		return c2;
 	}
 	@PutMapping
-	public Coche usoPut(@RequestBody Coche car)
+	public CocheDto usoPut(@RequestBody CocheDto car)
 	{
-		cocheControlador.save(car);
+		cocheControlador.save(servicioCoches.toModel(car));		
 		return car;
 	}
 	@PostMapping
-	public Coche usoPost(@RequestBody Coche car)
+	public CocheDto usoPost(@RequestBody CocheDto car)
 	{
-		//devolver el elementoque tienes
-		cocheControlador.save(car);
+		cocheControlador.save(servicioCoches.toModel(car));		
 		return car;
 	}
 	@DeleteMapping("/{id}")
-	public void usoDelete(@PathVariable("id")String id)
+	public CocheDto usoDelete(@PathVariable("id")String id)
 	{
-		cocheControlador.deleteById(id);
+		Coche c1= cocheControlador.getOne(id);
+		CocheDto c2= servicioCoches.toDto(c1);
+		cocheControlador.delete(cocheControlador.getOne(id));
+		
+		return c2;
 	}
 	
-	
-	
-
 }
 
