@@ -15,7 +15,7 @@ public class CocheController {
 	@GetMapping("/{id}")
 	public CocheDto findOne(@PathVariable("id")Integer id)
 	{
-		CocheDto c1= new  CocheDto("2232","verde","nissaf","kadet");
+		CocheDto c1= new  CocheDto("2232","verde","nissa","kadet");
 		return c1;
 
 	}
