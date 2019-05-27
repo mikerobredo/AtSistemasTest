@@ -38,7 +38,12 @@ public class Coche {
 	
 	@OneToMany(mappedBy="cocheAlquilado")
 	private List<Alquiler> alquileres= new ArrayList<Alquiler>();
-	@ManyToMany(mappedBy="coches")
+	@ManyToMany//(mappedBy="coches")
 	private Set<Tarifa> tarifas = new HashSet<>();
+	
+	public void setTarifa(Tarifa e)
+	{
+		tarifas.add(e);
+	}
 	
 }

@@ -30,7 +30,6 @@ public class CocheController {
 	@GetMapping
 	public List<CocheDto> todos()
 	{
-		//return cocheControlador.findAll();
 		List<Coche> lc = cocheControlador.findAll();
 		List<CocheDto> lcDto = new ArrayList<CocheDto>();
 		for(Coche c: lc)
