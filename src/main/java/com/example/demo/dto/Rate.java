@@ -7,8 +7,9 @@ import lombok.Data;
 @Data
 public class Rate {
 	
-	private Integer idTarifa;		
-	private Calendar fechaInicio,fechaFin;
-	private Float precio;
+	private Integer id;
+    private Double price;
+    private String startDate;
+    private String endDate;
 
 }

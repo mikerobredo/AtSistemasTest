@@ -10,9 +10,8 @@ public class Car {
 	public Car() {
 		// TODO Auto-generated constructor stub
 	}
-	private String matricula;
-	private String color;
-	private String marca;
-	private String modelo;
+	private Integer id;
+    private String carPlate;
+    private String registrationYear;
 
 }

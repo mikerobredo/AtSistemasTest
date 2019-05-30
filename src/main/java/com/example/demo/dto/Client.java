@@ -5,9 +5,8 @@ import lombok.Data;
 @Data
 public class Client {
 	
-	private Integer idPersona;
-	private String nombre;
-	private String apellido;
-	private String dni;
+	private Integer id;
+    private String dni;
+    private String name;
 
 }
