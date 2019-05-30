@@ -5,9 +5,9 @@ import lombok.Data;
 
 @Data
 @AllArgsConstructor
-public class CocheDto {
+public class Car {
 	
-	public CocheDto() {
+	public Car() {
 		// TODO Auto-generated constructor stub
 	}
 	private String matricula;

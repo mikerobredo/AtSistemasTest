@@ -2,16 +2,16 @@ package com.example.demo.MapperService;
 
 import org.springframework.stereotype.Service;
 
-import com.example.demo.dto.TarifaDto;
+import com.example.demo.dto.Rate;
 import com.example.demo.model.Tarifa;
 
 @Service
-public class MapperServiceTarifaImpl implements MapperService<TarifaDto,Tarifa>{
+public class MapperServiceTarifaImpl implements MapperService<Rate,Tarifa>{
 
 	@Override
-	public TarifaDto toDto(Tarifa model) {
+	public Rate toDto(Tarifa model) {
 		
-		TarifaDto c1 = new TarifaDto();
+		Rate c1 = new Rate();
 		
 		c1.setFechaInicio(model.getFechaInicio());
 		c1.setFechaFin(model.getFechaFin());
@@ -23,7 +23,7 @@ public class MapperServiceTarifaImpl implements MapperService<TarifaDto,Tarifa>{
 	}
 
 	@Override
-	public Tarifa toModel(TarifaDto mDto) {
+	public Tarifa toModel(Rate mDto) {
 		
 		Tarifa c1 = new Tarifa();
 		

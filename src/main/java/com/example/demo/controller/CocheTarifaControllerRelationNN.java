@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.demo.MapperService.MapperService;
 import com.example.demo.Repo.CocheRepo;
 import com.example.demo.Repo.TarifaRepo;
-import com.example.demo.dto.CocheDto;
-import com.example.demo.dto.TarifaDto;
+import com.example.demo.dto.Car;
+import com.example.demo.dto.Rate;
 import com.example.demo.model.Coche;
 import com.example.demo.model.Tarifa;
 
@@ -25,11 +25,11 @@ public class CocheTarifaControllerRelationNN {
 	@Autowired
 	private CocheRepo cocheControlador;
 	@Autowired
-	private MapperService<CocheDto, Coche> servicioCoches;
+	private MapperService<Car, Coche> servicioCoches;
 	@Autowired
 	private TarifaRepo tarifaControlador;
 	@Autowired
-	private MapperService<TarifaDto, Tarifa> serviciotarifas;
+	private MapperService<Rate, Tarifa> serviciotarifas;
 	
 	@GetMapping
 	public void todos(@PathVariable("id")String id, @PathVariable("id2") Integer id2)

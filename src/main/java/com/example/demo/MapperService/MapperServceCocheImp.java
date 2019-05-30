@@ -2,16 +2,16 @@ package com.example.demo.MapperService;
 
 import org.springframework.stereotype.Service;
 
-import com.example.demo.dto.CocheDto;
+import com.example.demo.dto.Car;
 import com.example.demo.model.Coche;
 
 @Service//component
-public class MapperServceCocheImp implements MapperService<CocheDto,Coche>{
+public class MapperServceCocheImp implements MapperService<Car,Coche>{
 
 	@Override
-	public CocheDto toDto(Coche model) {
+	public Car toDto(Coche model) {
 		
-		CocheDto c1 = new CocheDto();
+		Car c1 = new Car();
 		
 		c1.setColor(model.getColor());
 		c1.setMarca(model.getMarca());
@@ -23,7 +23,7 @@ public class MapperServceCocheImp implements MapperService<CocheDto,Coche>{
 	}
 
 	@Override
-	public Coche toModel(CocheDto mDto) {
+	public Coche toModel(Car mDto) {
 		
 		Coche c1 = new Coche();
 		

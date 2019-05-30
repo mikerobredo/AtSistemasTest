@@ -6,7 +6,7 @@ import lombok.Data;
 
 
 @Data
-public class AlquilerDto {
+public class Rental {
 	
 	private Integer idAlquiler;
 	private Calendar fechaInicioAlquiler, fechaFinAlquiler;

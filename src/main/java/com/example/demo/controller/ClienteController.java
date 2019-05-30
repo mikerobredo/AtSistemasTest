@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.MapperService.MapperService;
 import com.example.demo.Repo.ClienteRepo;
-import com.example.demo.dto.ClienteDto;
+import com.example.demo.dto.Client;
 import com.example.demo.model.Cliente;
 
 @RestController
@@ -25,13 +25,13 @@ public class ClienteController {
 	@Autowired
 	private ClienteRepo clienteControlador;
 	@Autowired
-	private MapperService<ClienteDto, Cliente> servicioClientes;
+	private MapperService<Client, Cliente> servicioClientes;
 	
 	@GetMapping
-	public List<ClienteDto> todos()
+	public List<Client> todos()
 	{
 		List<Cliente> lc = clienteControlador.findAll();
-		List<ClienteDto> lcDto = new ArrayList<ClienteDto>();
+		List<Client> lcDto = new ArrayList<Client>();
 		for(Cliente c: lc)
 		{
 			lcDto.add(servicioClientes.toDto(c));
@@ -40,29 +40,29 @@ public class ClienteController {
 	}
 	
 	@GetMapping("/{id}")
-	public ClienteDto busca(@PathVariable("id")Integer id)
+	public Client busca(@PathVariable("id")Integer id)
 	{	
 		Cliente c1= clienteControlador.getOne(id);
-		ClienteDto c2= servicioClientes.toDto(c1);
+		Client c2= servicioClientes.toDto(c1);
 		return c2;
 	}
 	@PutMapping
-	public ClienteDto usoPut(@RequestBody ClienteDto car)
+	public Client usoPut(@RequestBody Client car)
 	{
 		clienteControlador.save(servicioClientes.toModel(car));		
 		return car;
 	}
 	@PostMapping
-	public ClienteDto usoPost(@RequestBody ClienteDto car)
+	public Client usoPost(@RequestBody Client car)
 	{
 		clienteControlador.save(servicioClientes.toModel(car));		
 		return car;
 	}
 	@DeleteMapping("/{id}")
-	public ClienteDto usoDelete(@PathVariable("id")Integer id)
+	public Client usoDelete(@PathVariable("id")Integer id)
 	{
 		Cliente c1= clienteControlador.getOne(id);
-		ClienteDto c2= servicioClientes.toDto(c1);
+		Client c2= servicioClientes.toDto(c1);
 		clienteControlador.delete(clienteControlador.getOne(id));
 		
 		return c2;

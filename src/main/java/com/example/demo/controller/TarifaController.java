@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.MapperService.MapperService;
 import com.example.demo.Repo.TarifaRepo;
-import com.example.demo.dto.TarifaDto;
+import com.example.demo.dto.Rate;
 import com.example.demo.model.Tarifa;
 
 @RestController
@@ -26,10 +26,10 @@ public class TarifaController {
 	@Autowired
 	private TarifaRepo tarifaControlador;
 	@Autowired
-	private MapperService<TarifaDto, Tarifa> serviciotarifas;
+	private MapperService<Rate, Tarifa> serviciotarifas;
 	
 	@GetMapping
-	public List<TarifaDto> todos()
+	public List<Rate> todos()
 	{
 		/**crear una entidad desde dentro para ver el json que muestra y usarlo
 		 * 
@@ -42,7 +42,7 @@ public class TarifaController {
 		*/
 		
 		List<Tarifa> lc = tarifaControlador.findAll();
-		List<TarifaDto> lcDto = new ArrayList<TarifaDto>();
+		List<Rate> lcDto = new ArrayList<Rate>();
 		for(Tarifa c: lc)
 		{
 			lcDto.add(serviciotarifas.toDto(c));
@@ -51,30 +51,30 @@ public class TarifaController {
 	}
 	
 	@GetMapping("/{id}")
-	public TarifaDto busca(@PathVariable("id")Integer id)
+	public Rate busca(@PathVariable("id")Integer id)
 	{	
 		Tarifa c1= tarifaControlador.getOne(id);
 		//c1.
-		TarifaDto c2= serviciotarifas.toDto(c1);
+		Rate c2= serviciotarifas.toDto(c1);
 		return c2;
 	}
 	@PutMapping
-	public TarifaDto usoPut(@RequestBody TarifaDto car)
+	public Rate usoPut(@RequestBody Rate car)
 	{
 		tarifaControlador.save(serviciotarifas.toModel(car));		
 		return car;
 	}
 	@PostMapping
-	public TarifaDto usoPost(@RequestBody TarifaDto car)
+	public Rate usoPost(@RequestBody Rate car)
 	{
 		tarifaControlador.save(serviciotarifas.toModel(car));		
 		return car;
 	}
 	@DeleteMapping("/{id}")
-	public TarifaDto usoDelete(@PathVariable("id")Integer id)
+	public Rate usoDelete(@PathVariable("id")Integer id)
 	{
 		Tarifa c1= tarifaControlador.getOne(id);
-		TarifaDto c2= serviciotarifas.toDto(c1);
+		Rate c2= serviciotarifas.toDto(c1);
 		tarifaControlador.delete(tarifaControlador.getOne(id));
 		
 		return c2;

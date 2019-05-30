@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.demo.MapperService.MapperService;
 import com.example.demo.Repo.AlquilerRepo;
 import com.example.demo.Repo.ClienteRepo;
-import com.example.demo.dto.AlquilerDto;
+import com.example.demo.dto.Rental;
 import com.example.demo.model.Alquiler;
 
 @RestController
@@ -26,15 +26,15 @@ public class AlquilerController {
 	@Autowired
 	private AlquilerRepo alquilerControlador;
 	@Autowired
-	private MapperService<AlquilerDto, Alquiler> servicioAlquilers;
+	private MapperService<Rental, Alquiler> servicioAlquilers;
 	@Autowired
 	private ClienteRepo clienteControlador;
 	
 	@GetMapping
-	public List<AlquilerDto> todos()
+	public List<Rental> todos()
 	{
 		List<Alquiler> lc = alquilerControlador.findAll();
-		List<AlquilerDto> lcDto = new ArrayList<AlquilerDto>();
+		List<Rental> lcDto = new ArrayList<Rental>();
 		for(Alquiler c: lc)
 		{
 			lcDto.add(servicioAlquilers.toDto(c));
@@ -43,32 +43,32 @@ public class AlquilerController {
 	}
 	
 	@GetMapping("/{id}")
-	public AlquilerDto busca(@PathVariable("id")Integer id)
+	public Rental busca(@PathVariable("id")Integer id)
 	{	
 		Alquiler c1= alquilerControlador.getOne(id);
 		c1.setClienteAlquilado(clienteControlador.getOne(1));
 		alquilerControlador.save(c1);
-		AlquilerDto c2= servicioAlquilers.toDto(c1);
+		Rental c2= servicioAlquilers.toDto(c1);
 		return c2;
 	}
 	@PutMapping
-	public AlquilerDto usoPut(@RequestBody AlquilerDto car)
+	public Rental usoPut(@RequestBody Rental car)
 	{
 		
 		alquilerControlador.save(servicioAlquilers.toModel(car));		
 		return car;
 	}
 	@PostMapping
-	public AlquilerDto usoPost(@RequestBody AlquilerDto car)
+	public Rental usoPost(@RequestBody Rental car)
 	{
 		alquilerControlador.save(servicioAlquilers.toModel(car));		
 		return car;
 	}
 	@DeleteMapping("/{id}")
-	public AlquilerDto usoDelete(@PathVariable("id")Integer id)
+	public Rental usoDelete(@PathVariable("id")Integer id)
 	{
 		Alquiler c1= alquilerControlador.getOne(id);
-		AlquilerDto c2= servicioAlquilers.toDto(c1);
+		Rental c2= servicioAlquilers.toDto(c1);
 		alquilerControlador.delete(alquilerControlador.getOne(id));
 		
 		return c2;

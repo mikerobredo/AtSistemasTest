@@ -2,16 +2,16 @@ package com.example.demo.MapperService;
 
 import org.springframework.stereotype.Service;
 
-import com.example.demo.dto.AlquilerDto;
+import com.example.demo.dto.Rental;
 import com.example.demo.model.Alquiler;
 
 @Service
-public class MapperServiceAlquilerImp implements MapperService<AlquilerDto,Alquiler>{
+public class MapperServiceAlquilerImp implements MapperService<Rental,Alquiler>{
 
 	@Override
-	public AlquilerDto toDto(Alquiler model) {
+	public Rental toDto(Alquiler model) {
 		
-		AlquilerDto c1 = new AlquilerDto();
+		Rental c1 = new Rental();
 		
 		c1.setFechaInicioAlquiler(model.getFechaInicioAlquiler());
 		c1.setFechaFinAlquiler(model.getFechaFinAlquiler());
@@ -23,7 +23,7 @@ public class MapperServiceAlquilerImp implements MapperService<AlquilerDto,Alqui
 	}
 
 	@Override
-	public Alquiler toModel(AlquilerDto mDto) {
+	public Alquiler toModel(Rental mDto) {
 		
 		Alquiler c1 = new Alquiler();
 		

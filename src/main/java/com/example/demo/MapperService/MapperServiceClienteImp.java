@@ -2,16 +2,16 @@ package com.example.demo.MapperService;
 
 import org.springframework.stereotype.Service;
 
-import com.example.demo.dto.ClienteDto;
+import com.example.demo.dto.Client;
 import com.example.demo.model.Cliente;
 
 @Service
-public class MapperServiceClienteImp implements MapperService<ClienteDto,Cliente>{
+public class MapperServiceClienteImp implements MapperService<Client,Cliente>{
 
 	@Override
-	public ClienteDto toDto(Cliente model) {
+	public Client toDto(Cliente model) {
 		
-		ClienteDto c1 = new ClienteDto();
+		Client c1 = new Client();
 		
 		c1.setDni(model.getDni());
 		c1.setNombre(model.getNombre());
@@ -23,7 +23,7 @@ public class MapperServiceClienteImp implements MapperService<ClienteDto,Cliente
 	}
 
 	@Override
-	public Cliente toModel(ClienteDto mDto) {
+	public Cliente toModel(Client mDto) {
 		
 		Cliente c1 = new Cliente();
 		
