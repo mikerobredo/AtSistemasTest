@@ -1,9 +1,12 @@
 package com.example.demo.controller;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -29,12 +32,18 @@ public class CocheTarifaControllerRelationNN {
 	private MapperService<TarifaDto, Tarifa> serviciotarifas;
 	
 	@GetMapping
-	public void todos()
+	public void todos(@PathVariable("id")String id, @PathVariable("id2") Integer id2)
 	{
-		Coche c1= cocheControlador.getOne("9639bmv");
-		Tarifa c2 = tarifaControlador.getOne(1);
-		c1.setTarifa(c2);
+		System.out.print(id);
+		System.out.print(id2);
+		
+		Coche c1= cocheControlador.getOne(id);
+		Tarifa c2 = tarifaControlador.getOne(id2);
+		Set<Tarifa> s1 =c1.getTarifas();
+		s1.add(c2);
+		c1.setTarifas(s1);
 		cocheControlador.save(c1);
+		
 	}
 
 }

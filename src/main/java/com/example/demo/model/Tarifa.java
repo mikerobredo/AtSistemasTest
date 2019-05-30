@@ -31,7 +31,7 @@ public class Tarifa {
 	@Temporal(TemporalType.DATE)
 	private Calendar fechaInicio,fechaFin;
 	
-	@ManyToMany
+	@ManyToMany(mappedBy="tarifas")
 	private Set<Coche> coches = new HashSet<>();
 	
 

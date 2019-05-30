@@ -54,6 +54,7 @@ public class TarifaController {
 	public TarifaDto busca(@PathVariable("id")Integer id)
 	{	
 		Tarifa c1= tarifaControlador.getOne(id);
+		//c1.
 		TarifaDto c2= serviciotarifas.toDto(c1);
 		return c2;
 	}

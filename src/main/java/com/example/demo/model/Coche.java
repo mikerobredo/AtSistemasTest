@@ -18,7 +18,7 @@ import lombok.Data;
 @Data
 @Entity
 @AllArgsConstructor
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+//@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Coche {
 	public Coche() {}
 	
@@ -38,12 +38,9 @@ public class Coche {
 	
 	@OneToMany(mappedBy="cocheAlquilado")
 	private List<Alquiler> alquileres= new ArrayList<Alquiler>();
-	@ManyToMany//(mappedBy="coches")
+	@ManyToMany
 	private Set<Tarifa> tarifas = new HashSet<>();
 	
-	public void setTarifa(Tarifa e)
-	{
-		tarifas.add(e);
-	}
+	
 	
 }

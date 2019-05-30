@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 import com.example.demo.dto.CocheDto;
 import com.example.demo.model.Coche;
 
-@Service
+@Service//component
 public class MapperServceCocheImp implements MapperService<CocheDto,Coche>{
 
 	@Override

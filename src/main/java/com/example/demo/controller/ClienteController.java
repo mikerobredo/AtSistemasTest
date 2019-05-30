@@ -19,7 +19,7 @@ import com.example.demo.dto.ClienteDto;
 import com.example.demo.model.Cliente;
 
 @RestController
-@RequestMapping("/Cliente")
+@RequestMapping("/cliente")
 public class ClienteController {
 	
 	@Autowired
