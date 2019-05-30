@@ -14,12 +14,10 @@ public class MapperServiceClienteImp implements MapperService<Client,Cliente>{
 		Client c1 = new Client();
 		
 		c1.setDni(model.getDni());
-		c1.setNombre(model.getNombre());
-		c1.setApellido(model.getApellido());
-		c1.setIdPersona(model.getIdPersona());
+		c1.setName(model.getNombre());		
+		c1.setId(model.getIdPersona());
 		
-		return c1;
-		
+		return c1;		
 	}
 
 	@Override
@@ -28,10 +26,9 @@ public class MapperServiceClienteImp implements MapperService<Client,Cliente>{
 		Cliente c1 = new Cliente();
 		
 		c1.setDni(mDto.getDni());
-		c1.setNombre(mDto.getNombre());
-		c1.setApellido(mDto.getApellido());
-		c1.setIdPersona(mDto.getIdPersona());
-				
+		c1.setNombre(mDto.getName());		
+		c1.setIdPersona(mDto.getId());
+		
 		return c1;
 	}
 

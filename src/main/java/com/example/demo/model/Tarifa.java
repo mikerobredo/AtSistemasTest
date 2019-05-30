@@ -1,6 +1,7 @@
 package com.example.demo.model;
 
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -27,9 +28,10 @@ public class Tarifa {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer idTarifa;
-	private Float precio;
+	
+	private Double precio;
 	@Temporal(TemporalType.DATE)
-	private Calendar fechaInicio,fechaFin;
+	private Date fechaInicio,fechaFin;
 	
 	@ManyToMany(mappedBy="tarifas")
 	private Set<Coche> coches = new HashSet<>();

@@ -13,10 +13,10 @@ public class MapperServiceTarifaImpl implements MapperService<Rate,Tarifa>{
 		
 		Rate c1 = new Rate();
 		
-		c1.setFechaInicio(model.getFechaInicio());
-		c1.setFechaFin(model.getFechaFin());
-		c1.setIdTarifa(model.getIdTarifa());
-		c1.setPrecio(model.getPrecio());
+		c1.setStartDate(model.getFechaInicio().toString());
+		c1.setEndDate(model.getFechaFin().toString());
+		c1.setId(model.getIdTarifa());
+		c1.setPrice(model.getPrecio());
 		
 		return c1;
 		
@@ -27,10 +27,10 @@ public class MapperServiceTarifaImpl implements MapperService<Rate,Tarifa>{
 		
 		Tarifa c1 = new Tarifa();
 		
-		c1.setFechaInicio(mDto.getFechaInicio());
-		c1.setFechaFin(mDto.getFechaFin());
-		c1.setIdTarifa(mDto.getIdTarifa());
-		c1.setPrecio(mDto.getPrecio());
+		c1.setFechaInicio(mDto.getStartDate());
+		c1.setFechaFin(mDto.getEndDate());
+		c1.setIdTarifa(mDto.getId());
+		c1.setPrecio(mDto.getPrice());
 		
 		return c1;
 	}

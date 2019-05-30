@@ -1,6 +1,6 @@
 package com.example.demo.model;
 
-import java.util.Calendar;
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -20,8 +20,8 @@ public class Alquiler {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer idAlquiler;
 	@Temporal(TemporalType.DATE)
-	private Calendar fechaInicioAlquiler, fechaFinAlquiler;
-	private Float precio;
+	private Date fechaInicioAlquiler, fechaFinAlquiler;
+	private Double precio;
 	
 	@ManyToOne
 	private Coche cocheAlquilado;

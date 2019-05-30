@@ -8,5 +8,4 @@ public class Client {
 	private Integer id;
     private String dni;
     private String name;
-
 }

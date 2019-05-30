@@ -17,8 +17,8 @@ public class Cliente {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer idPersona;
+	
 	private String nombre;
-	private String apellido;
 	private String dni;
 	
 	@OneToMany(mappedBy="clienteAlquilado")

@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
@@ -21,20 +23,11 @@ import lombok.Data;
 //@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Coche {
 	public Coche() {}
-	
-	public Coche(String string, String string2, String string3, String string4) {
-		this.matricula=string;
-		this.color=string2;
-		this.marca=string3;
-		this.modelo=string4;
-		
-		// TODO Auto-generated constructor stub
-	}
 	@Id	
-	private String matricula;
-	private String color;
-	private String marca;
-	private String modelo;
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Integer id;
+	private String carPlate;
+	private String registrationYear;
 	
 	@OneToMany(mappedBy="cocheAlquilado")
 	private List<Alquiler> alquileres= new ArrayList<Alquiler>();
