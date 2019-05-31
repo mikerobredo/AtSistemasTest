@@ -1,11 +1,12 @@
 package com.example.demo.MapperService;
 
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.dto.Client;
 import com.example.demo.model.Cliente;
 
-@Service
+@Component
 public class MapperServiceClienteImp implements MapperService<Client,Cliente>{
 
 	@Override

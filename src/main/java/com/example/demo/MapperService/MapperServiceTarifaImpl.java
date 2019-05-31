@@ -4,12 +4,13 @@ import java.util.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.dto.Rate;
 import com.example.demo.model.Tarifa;
 
-@Service
+@Component
 public class MapperServiceTarifaImpl implements MapperService<Rate,Tarifa>{
 
 	@Override

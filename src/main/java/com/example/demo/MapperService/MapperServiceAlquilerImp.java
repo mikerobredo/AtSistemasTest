@@ -1,6 +1,7 @@
 package com.example.demo.MapperService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 
@@ -20,7 +21,7 @@ import com.example.demo.model.Coche;
 import com.example.demo.model.Tarifa;
 
 
-@Controller
+@Component
 public class MapperServiceAlquilerImp implements MapperService<Rental,Alquiler>{
 
 	

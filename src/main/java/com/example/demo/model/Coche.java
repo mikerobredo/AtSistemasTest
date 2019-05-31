@@ -5,8 +5,10 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -34,9 +36,20 @@ public class Coche {
 	
 	@OneToMany(mappedBy="cocheAlquilado")
 	private List<Alquiler> alquileres= new ArrayList<Alquiler>();
-	@ManyToMany
-	private Set<Tarifa> tarifas = new HashSet<>();
+	@ManyToMany(cascade = {
+		    CascadeType.PERSIST,
+		    CascadeType.MERGE
+		})
+	private Set<Tarifa> tarifas = new HashSet<Tarifa>();
 	
-	
-	
+	//metodos para el control de la relaccion
+	public void addTarifa(Tarifa tarifa) {
+        tarifas.add(tarifa);
+        tarifa.getCoches().add(this);
+    }
+ 
+    public void removeTarifa(Tarifa tarifa) {
+        tarifas.remove(tarifa);
+        tarifa.getCoches().remove(this);
+    }
 }

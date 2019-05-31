@@ -33,16 +33,10 @@ public class CocheTarifaControllerRelationNN {
 	
 	@GetMapping
 	public void todos(@PathVariable("id")Integer id, @PathVariable("id2") Integer id2)
-	{
-		System.out.print(id);
-		System.out.print(id2);
-		
-		Coche c1= cocheControlador.getOne(id);
-		Tarifa c2 = tarifaControlador.getOne(id2);
-		Set<Tarifa> s1 =c1.getTarifas();
-		s1.add(c2);
-		c1.setTarifas(s1);
-		cocheControlador.save(c1);
+	{		
+		Coche c1= cocheControlador.getOne(id);		
+		c1.addTarifa(tarifaControlador.getOne(id2));		
+		cocheControlador.save(c1);	
 		
 	}
 
