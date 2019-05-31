@@ -22,7 +22,13 @@ import com.example.demo.model.Coche;
 @RestController
 @RequestMapping("/coche")
 public class CocheController {
-	
+	/*
+	 * 
+	 * 	
+	"id":"1",
+   "carPlate":"1123Bmw",
+	"registrationYear":"2002"
+	*/
 	@Autowired
 	private CocheRepo cocheControlador;
 	@Autowired
@@ -41,7 +47,7 @@ public class CocheController {
 	}
 	
 	@GetMapping("/{id}")
-	public Car busca(@PathVariable("id")String id)
+	public Car busca(@PathVariable("id")Integer id)
 	{	
 		Coche c1= cocheControlador.getOne(id);
 		Car c2= servicioCoches.toDto(c1);
@@ -56,11 +62,13 @@ public class CocheController {
 	@PostMapping
 	public Car usoPost(@RequestBody Car car) throws ParseException
 	{
-		cocheControlador.save(servicioCoches.toModel(car));		
-		return car;
+			
+		return servicioCoches.toDto
+				(cocheControlador.save
+						(servicioCoches.toModel(car)));
 	}
 	@DeleteMapping("/{id}")
-	public Car usoDelete(@PathVariable("id")String id)
+	public Car usoDelete(@PathVariable("id")Integer id)
 	{
 		Coche c1= cocheControlador.getOne(id);
 		Car c2= servicioCoches.toDto(c1);

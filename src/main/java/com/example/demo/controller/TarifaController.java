@@ -23,7 +23,13 @@ import com.example.demo.model.Tarifa;
 @RestController
 @RequestMapping("/tarifa")
 public class TarifaController {
-	
+	/*
+	 * 
+	"id":"1",
+	"price":"112",
+	"startDate":"2002-01-01 00:00:00.0",
+	"endDate":"2002-01-01 00:00:00.0"
+	 */
 	@Autowired
 	private TarifaRepo tarifaControlador;
 	@Autowired

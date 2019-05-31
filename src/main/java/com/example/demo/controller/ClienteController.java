@@ -22,6 +22,11 @@ import com.example.demo.model.Cliente;
 @RestController
 @RequestMapping("/cliente")
 public class ClienteController {
+	/*
+	 *  "id": 21,
+        "dni": "12345677",
+        "name": "curro"
+	 */
 	
 	@Autowired
 	private ClienteRepo clienteControlador;

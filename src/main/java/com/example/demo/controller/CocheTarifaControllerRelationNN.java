@@ -32,7 +32,7 @@ public class CocheTarifaControllerRelationNN {
 	private MapperService<Rate, Tarifa> serviciotarifas;
 	
 	@GetMapping
-	public void todos(@PathVariable("id")String id, @PathVariable("id2") Integer id2)
+	public void todos(@PathVariable("id")Integer id, @PathVariable("id2") Integer id2)
 	{
 		System.out.print(id);
 		System.out.print(id2);

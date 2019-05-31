@@ -24,6 +24,26 @@ import com.example.demo.model.Alquiler;
 @RequestMapping("/alquiler")
 public class AlquilerController {
 	
+	/*
+	 * 
+	 * {
+    "id": null,
+    "car": {
+        "id": 1,
+        "carPlate": "1123Bmw",
+        "registrationYear": "2002"
+    },
+    "client": {
+        "id": 21,
+        "dni": "12345677",
+        "name": "curro"
+    },
+    "price": 200,
+    "startDate": "2002-01-01 00:00:00.0",
+    "endDate": "2002-01-01 00:00:00.0"
+}
+	 */
+	
 	@Autowired
 	private AlquilerRepo alquilerControlador;
 	@Autowired
