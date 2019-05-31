@@ -34,8 +34,8 @@ public class MapperServiceTarifaImpl implements MapperService<Rate,Tarifa>{
 		
 		String s = mDto.getStartDate();
 		String e = mDto.getEndDate();
-		
-		SimpleDateFormat formatter1=new SimpleDateFormat("dd/MM/yyyy");
+		//SimpleDateFormat formatter1=new SimpleDateFormat("dd/MM/yyyy");
+		SimpleDateFormat formatter1=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
 		Date date1 = formatter1.parse(s);  
 		Date date2 = formatter1.parse(e);
 		
