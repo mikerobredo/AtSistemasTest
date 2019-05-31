@@ -1,4 +1,4 @@
-package com.example.demo.MapperService;
+package com.example.demo.Mapper;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -22,13 +22,13 @@ import com.example.demo.model.Tarifa;
 
 
 @Component
-public class MapperServiceAlquilerImp implements MapperService<Rental,Alquiler>{
+public class MapperComponentAlquilerImp implements MapperComponent<Rental,Alquiler>{
 
 	
 	@Autowired
-	private MapperService<Car, Coche> MapperCar;
+	private MapperComponent<Car, Coche> MapperCar;
 	@Autowired
-	private MapperService<Client, Cliente> MapperClient;
+	private MapperComponent<Client, Cliente> MapperClient;
 	
 	
 	@Override

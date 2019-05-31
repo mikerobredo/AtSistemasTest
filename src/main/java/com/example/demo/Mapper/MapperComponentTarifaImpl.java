@@ -1,4 +1,4 @@
-package com.example.demo.MapperService;
+package com.example.demo.Mapper;
 
 import java.util.Date;
 import java.text.ParseException;
@@ -11,7 +11,7 @@ import com.example.demo.dto.Rate;
 import com.example.demo.model.Tarifa;
 
 @Component
-public class MapperServiceTarifaImpl implements MapperService<Rate,Tarifa>{
+public class MapperComponentTarifaImpl implements MapperComponent<Rate,Tarifa>{
 
 	@Override
 	public Rate toDto(Tarifa model) {

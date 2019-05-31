@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.demo.MapperService.MapperService;
+import com.example.demo.Mapper.MapperComponent;
 import com.example.demo.Repo.AlquilerRepo;
 import com.example.demo.Repo.ClienteRepo;
 import com.example.demo.dto.Rental;
@@ -47,7 +47,7 @@ public class AlquilerController {
 	@Autowired
 	private AlquilerRepo alquilerControlador;
 	@Autowired
-	private MapperService<Rental, Alquiler> servicioAlquilers;
+	private MapperComponent<Rental, Alquiler> servicioAlquilers;
 	@Autowired
 	private ClienteRepo clienteControlador;
 	

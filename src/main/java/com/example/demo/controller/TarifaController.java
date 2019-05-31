@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.demo.MapperService.MapperService;
+import com.example.demo.Mapper.MapperComponent;
 import com.example.demo.Repo.TarifaRepo;
 import com.example.demo.dto.Rate;
 import com.example.demo.model.Tarifa;
@@ -33,7 +33,7 @@ public class TarifaController {
 	@Autowired
 	private TarifaRepo tarifaControlador;
 	@Autowired
-	private MapperService<Rate, Tarifa> serviciotarifas;
+	private MapperComponent<Rate, Tarifa> serviciotarifas;
 	
 	@GetMapping
 	public List<Rate> todos()
