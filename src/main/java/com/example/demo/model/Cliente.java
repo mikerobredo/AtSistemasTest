@@ -3,6 +3,7 @@ package com.example.demo.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -19,6 +20,8 @@ public class Cliente {
 	private Integer idPersona;
 	
 	private String nombre;
+	//fixme no existe la relccion
+	//@Column(unique=true)
 	private String dni;
 	
 	@OneToMany(mappedBy="clienteAlquilado")

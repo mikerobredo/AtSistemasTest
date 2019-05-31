@@ -27,9 +27,9 @@ public class Tarifa {
 	public Tarifa() {}
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer idTarifa;
-	
+	private Integer idTarifa;	
 	private Double precio;
+	
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date fechaInicio,fechaFin;
 	

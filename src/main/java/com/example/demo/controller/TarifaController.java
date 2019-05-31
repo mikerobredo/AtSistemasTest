@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -59,13 +60,13 @@ public class TarifaController {
 		return c2;
 	}
 	@PutMapping
-	public Rate usoPut(@RequestBody Rate car)
+	public Rate usoPut(@RequestBody Rate car) throws ParseException
 	{
 		tarifaControlador.save(serviciotarifas.toModel(car));		
 		return car;
 	}
 	@PostMapping
-	public Rate usoPost(@RequestBody Rate car)
+	public Rate usoPost(@RequestBody Rate car) throws ParseException
 	{
 		tarifaControlador.save(serviciotarifas.toModel(car));		
 		return car;

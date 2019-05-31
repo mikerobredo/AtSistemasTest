@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -47,13 +48,13 @@ public class ClienteController {
 		return c2;
 	}
 	@PutMapping
-	public Client usoPut(@RequestBody Client car)
+	public Client usoPut(@RequestBody Client car) throws ParseException
 	{
 		clienteControlador.save(servicioClientes.toModel(car));		
 		return car;
 	}
 	@PostMapping
-	public Client usoPost(@RequestBody Client car)
+	public Client usoPost(@RequestBody Client car) throws ParseException
 	{
 		clienteControlador.save(servicioClientes.toModel(car));		
 		return car;

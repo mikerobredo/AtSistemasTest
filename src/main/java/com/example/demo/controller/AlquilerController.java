@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -52,14 +53,14 @@ public class AlquilerController {
 		return c2;
 	}
 	@PutMapping
-	public Rental usoPut(@RequestBody Rental car)
+	public Rental usoPut(@RequestBody Rental car) throws ParseException
 	{
 		
 		alquilerControlador.save(servicioAlquilers.toModel(car));		
 		return car;
 	}
 	@PostMapping
-	public Rental usoPost(@RequestBody Rental car)
+	public Rental usoPost(@RequestBody Rental car) throws ParseException
 	{
 		alquilerControlador.save(servicioAlquilers.toModel(car));		
 		return car;
