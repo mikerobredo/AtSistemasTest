@@ -30,7 +30,7 @@ public class Tarifa {
 	private Integer idTarifa;
 	
 	private Double precio;
-	@Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date fechaInicio,fechaFin;
 	
 	@ManyToMany(mappedBy="tarifas")

@@ -19,7 +19,7 @@ public class Alquiler {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer idAlquiler;
-	@Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date fechaInicioAlquiler, fechaFinAlquiler;
 	private Double precio;
 	
