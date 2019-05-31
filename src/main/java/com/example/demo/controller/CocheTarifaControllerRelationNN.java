@@ -37,7 +37,6 @@ public class CocheTarifaControllerRelationNN {
 		Coche c1= cocheControlador.getOne(id);		
 		c1.addTarifa(tarifaControlador.getOne(id2));		
 		cocheControlador.save(c1);	
-		
 	}
 
 }
