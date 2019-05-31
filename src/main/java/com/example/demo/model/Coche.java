@@ -40,7 +40,7 @@ public class Coche {
 		    CascadeType.PERSIST,
 		    CascadeType.MERGE
 		})
-	private Set<Tarifa> tarifas = new HashSet<Tarifa>();
+	private List<Tarifa> tarifas = new ArrayList<Tarifa>();
 	
 	//metodos para el control de la relaccion
 	public void addTarifa(Tarifa tarifa) {

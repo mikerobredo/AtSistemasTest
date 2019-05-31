@@ -1,5 +1,6 @@
 package com.example.demo.model;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashSet;
@@ -35,7 +36,8 @@ public class Tarifa {
 	private Date fechaInicio,fechaFin;
 	
 	@ManyToMany(mappedBy="tarifas",fetch = FetchType.LAZY)
-	private Set<Coche> coches = new HashSet<Coche>();
+	//private Set<Coche> coches = new HashSet<Coche>();
+	private List<Coche> coches = new ArrayList<Coche>();
 	
 
 }
