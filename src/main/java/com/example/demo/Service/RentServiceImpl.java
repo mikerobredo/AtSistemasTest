@@ -2,7 +2,6 @@ package com.example.demo.Service;
 
 import java.util.Optional;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -57,16 +56,4 @@ public class RentServiceImpl implements RentalService {
 		Page<Alquiler> lc = AlquilerRepo.findAll(p);		
 		return lc.map(x -> servicioAlquilers.toDto(x));		
 	}
-	
-	private Boolean validate(Alquiler u) {
-		return u != null &&
-				u.getFechaInicioAlquiler() != null &&
-				u.getFechaFinAlquiler() !=null && 
-				u.getClienteAlquilado() != null &&
-				u.getCocheAlquilado()!=null && 
-				u.getIdAlquiler() !=null &&
-				u.getPrecio() != null;
-	}
-
-
 }

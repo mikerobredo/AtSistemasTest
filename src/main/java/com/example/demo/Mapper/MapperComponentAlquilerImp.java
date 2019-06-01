@@ -1,24 +1,18 @@
 package com.example.demo.Mapper;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Controller;
-import org.springframework.stereotype.Service;
-
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Locale;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import com.example.demo.dto.Car;
 import com.example.demo.dto.Client;
-import com.example.demo.dto.Rate;
 import com.example.demo.dto.Rental;
 import com.example.demo.model.Alquiler;
 import com.example.demo.model.Cliente;
 import com.example.demo.model.Coche;
-import com.example.demo.model.Tarifa;
 
 
 @Component
