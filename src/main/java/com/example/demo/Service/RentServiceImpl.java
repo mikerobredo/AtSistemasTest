@@ -1,13 +1,11 @@
 package com.example.demo.Service;
 
-import java.util.List;
 import java.util.Optional;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.Mapper.MapperComponent;
@@ -24,19 +22,21 @@ public class RentServiceImpl implements RentalService {
 	private MapperComponent<Rental, Alquiler> servicioAlquilers;
 
 	@Override
-	public Optional<Alquiler> buscaPorId(Integer id) {		
-		 Optional<Alquiler> c1= AlquilerRepo.findById(id);
-		 return c1;
+	public Optional<Alquiler> buscaPorId(Integer id) {
+		
+		 return AlquilerRepo.findById(id);
 	}
 
 	@Override
 	public void usaPutModifica(Alquiler a) {
+		
 		Optional<Alquiler> c1=AlquilerRepo.findById(a.getIdAlquiler());
+		
 		//si hay uno con ese id--- lo guardo creo que es redundante
 		if (c1.isPresent()) {AlquilerRepo.save(a);}
-		else {//error hay algun nulo
-		}
 		
+		else {//error hay algun nulo
+		}		
 	}
 
 	@Override
@@ -47,7 +47,9 @@ public class RentServiceImpl implements RentalService {
 	@Override
 	public void usoDelete(Integer id) {
 		Optional<Alquiler> c1= AlquilerRepo.findById(id);
-		if (validate(c1.get())) AlquilerRepo.deleteById(id);		
+		if (c1.isPresent()) AlquilerRepo.deleteById(id);
+		else
+		{}
 	}
 	
 	@Override
