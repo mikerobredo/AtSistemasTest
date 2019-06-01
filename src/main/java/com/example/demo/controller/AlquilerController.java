@@ -72,21 +72,31 @@ public class AlquilerController {
 		return RentService.buscaPorId(id).
 				map(Mapper::toDto)
 				.map(ResponseEntity::ok)
-				.orElse(ResponseEntity.notFound().build());
-		 
+				.orElse(ResponseEntity.notFound().build());		 
 	}
 	
 	@PutMapping
-	public ResponseEntity<Rental> usoPut(@RequestBody Rental car) throws ParseException
+	public void usoPut(@RequestBody Rental car) throws ParseException
 	{
-		return null;
-		
+		Optional<Alquiler> a=RentService.buscaPorId(car.getId());
+		//si hay algo puedo modificar --> ok
+		if(a.isPresent()) RentService.usaPutModifica(Mapper.toModel(car));
+		else		{
+			//si no hay nada no
+		}		
 	}
+	
 	@PostMapping
-	public ResponseEntity<Rental> usoPost(@RequestBody Rental car) throws ParseException
-	{
-		return null;
+	public ResponseEntity<Rental> usoPost(@RequestBody Rental car) throws ParseException{
 		
+		if(car.getId()==null) return ResponseEntity.notFound().build();
+		
+		Optional<Alquiler> a=RentService.buscaPorId(car.getId());
+		if(a.isPresent()) {return ResponseEntity.notFound().build();}		
+		else  return RentService.usaPostCrea(Mapper.toModel(car))
+				.map(Mapper::toDto)
+				.map(ResponseEntity::ok)
+				.orElse(ResponseEntity.notFound().build());			
 	}
 	@DeleteMapping("/{id}")
 	public void usoDelete(@PathVariable("id")Integer id)

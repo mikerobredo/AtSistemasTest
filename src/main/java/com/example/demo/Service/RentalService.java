@@ -13,9 +13,10 @@ import com.example.demo.model.Alquiler;
 public interface RentalService {
 	
 	public Optional<Alquiler> buscaPorId(Integer id);
-	public Rental usaPutModifica(Rental libro);
-	public Rental usaPostCrea(Rental libro);
+	public void usaPutModifica(Alquiler a);
+	//public Optional<Alquiler> usaPostCrea(Alquiler a);
 	public void usoDelete(Integer id);
-	public List<Rental> buscaPorNombre(String name);
+	
 	public Page<Rental> buscaTodosPage(String name,Pageable pageable);
+	public Optional<Alquiler> usaPostCrea(Alquiler libro);
 }
