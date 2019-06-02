@@ -23,7 +23,7 @@ import com.example.demo.dto.Client;
 import com.example.demo.model.Cliente;
 
 @RestController
-@RequestMapping("/cliente")
+@RequestMapping("/client")
 public class ClienteController {
 	/*
 	 *  "id": 21,
@@ -67,12 +67,12 @@ public class ClienteController {
 	
 	@PostMapping
 	public ResponseEntity<Client> usoPost(@RequestBody Client car) throws ParseException{
-		
+		/*
 		if(car.getId()==null) return ResponseEntity.notFound().build();
 		
 		Optional<Cliente> a=ClientService.buscaPorId(car.getId());
 		if(a.isPresent())	{return ResponseEntity.notFound().build();}		
-		else 	return ClientService.usaPostCrea(Mapper.toModel(car))
+		else 	*/return ClientService.usaPostCrea(Mapper.toModel(car))
 				.map(Mapper::toDto)
 				.map(ResponseEntity::ok)
 				.orElse(ResponseEntity.notFound().build());			

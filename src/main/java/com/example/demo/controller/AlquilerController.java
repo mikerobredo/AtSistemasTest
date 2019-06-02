@@ -23,7 +23,7 @@ import com.example.demo.dto.Rental;
 import com.example.demo.model.Alquiler;
 
 @RestController
-@RequestMapping("/alquiler")
+@RequestMapping("/rental")
 public class AlquilerController {
 	
 	/*
@@ -82,12 +82,13 @@ public class AlquilerController {
 	
 	@PostMapping
 	public ResponseEntity<Rental> usoPost(@RequestBody Rental car) throws ParseException{
-		
+		/*
 		if(car.getId()==null) return ResponseEntity.notFound().build();
 		
 		Optional<Alquiler> a=RentService.buscaPorId(car.getId());
 		if(a.isPresent())	{return ResponseEntity.notFound().build();}		
-		else 	return RentService.usaPostCrea(Mapper.toModel(car))
+		else */
+			return RentService.usaPostCrea(Mapper.toModel(car))
 				.map(Mapper::toDto)
 				.map(ResponseEntity::ok)
 				.orElse(ResponseEntity.notFound().build());			

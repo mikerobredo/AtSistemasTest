@@ -31,6 +31,7 @@ public class Coche {
 	
 	@OneToMany(mappedBy="cocheAlquilado")
 	private List<Alquiler> alquileres= new ArrayList<Alquiler>();
+	
 	@ManyToMany(cascade = {
 		    CascadeType.PERSIST,
 		    CascadeType.MERGE

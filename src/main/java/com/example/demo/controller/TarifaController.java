@@ -23,7 +23,7 @@ import com.example.demo.dto.Rate;
 import com.example.demo.model.Tarifa;
 
 @RestController
-@RequestMapping("/tarifa")
+@RequestMapping("/rate")
 public class TarifaController {
 	/*
 	 * 
@@ -68,12 +68,14 @@ public class TarifaController {
 	
 	@PostMapping
 	public ResponseEntity<Rate> usoPost(@RequestBody Rate car) throws ParseException{
-		
+		/*
 		if(car.getId()==null) return ResponseEntity.notFound().build();
 		
 		Optional<Tarifa> a=RateService.buscaPorId(car.getId());
-		if(a.isPresent())	{return ResponseEntity.notFound().build();}		
-		else 	return RateService.usaPostCrea(Mapper.toModel(car))
+		if(a.isPresent())	{return ResponseEntity.notFound().build();}	
+		
+		else 	*/
+			return RateService.usaPostCrea(Mapper.toModel(car))
 				.map(Mapper::toDto)
 				.map(ResponseEntity::ok)
 				.orElse(ResponseEntity.notFound().build());			

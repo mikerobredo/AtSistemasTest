@@ -23,7 +23,7 @@ import com.example.demo.dto.Car;
 import com.example.demo.model.Coche;
 
 @RestController
-@RequestMapping("/coche")
+@RequestMapping("/car")
 public class CocheController {
 	/*
 	 * 
@@ -59,7 +59,6 @@ public class CocheController {
 	public void usoPut(@RequestBody Car car) throws ParseException{
 		Optional<Coche> a=CarService.buscaPorId(car.getId());
 		
-		//si hay algo puedo modificar --> ok
 		if(a.isPresent()) CarService.usaPutModifica(Mapper.toModel(car));
 		else		{
 			//si no hay nada no
@@ -68,12 +67,16 @@ public class CocheController {
 	
 	@PostMapping
 	public ResponseEntity<Car> usoPost(@RequestBody Car car) throws ParseException{
+		//si lo dejo me llega "" y no crea si lo quito tengo que meter un numero mayor al id de turno, no se que seria mejor supingo qu quitarlo
 		
+		/*
 		if(car.getId()==null) return ResponseEntity.notFound().build();
 		
 		Optional<Coche> a=CarService.buscaPorId(car.getId());
 		if(a.isPresent())	{return ResponseEntity.notFound().build();}		
-		else 	return CarService.usaPostCrea(Mapper.toModel(car))
+		else 	
+		*/
+			return CarService.usaPostCrea(Mapper.toModel(car))
 				.map(Mapper::toDto)
 				.map(ResponseEntity::ok)
 				.orElse(ResponseEntity.notFound().build());			

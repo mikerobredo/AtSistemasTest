@@ -30,16 +30,25 @@ public class CarServiceImpl implements CarService {
 	public void usaPutModifica(Coche a) {
 		
 		Optional<Coche> c1=CocheRepo.findById(a.getId());
+		Optional<Coche> c2=CocheRepo.findByCarPlate(a.getCarPlate());
 		
-		//si hay uno con ese id--- lo guardo creo que es redundante
-		if (c1.isPresent()) {CocheRepo.save(a);}
+		//si hay uno con ese id y no hay otro con esa matricula--- lo guardo creo que es redundante
+		
+		if (c1.isPresent() && !c2.isPresent() ) {CocheRepo.save(a);}
 		
 		else {//error hay algun nulo
 		}		
 	}
 
 	@Override
-	public Optional<Coche> usaPostCrea(Coche a) {		
+	public Optional<Coche> usaPostCrea(Coche a) {
+		Optional<Coche> c= CocheRepo.findByCarPlate(a.getCarPlate());
+		if(c.isPresent())
+		{
+			//devuelvo un vacio para que no se modifique nada , ya que existe uno
+			Optional<Coche> empty = Optional.empty();
+			return empty;
+		}
 		return CocheRepo.findById(CocheRepo.save(a).getId());		
 	}
 
