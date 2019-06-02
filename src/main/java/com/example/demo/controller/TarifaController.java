@@ -1,10 +1,12 @@
 package com.example.demo.controller;
 
 import java.text.ParseException;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,10 +14,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.Mapper.MapperComponent;
-import com.example.demo.Repo.TarifaRepo;
+import com.example.demo.Service.RateService;
 import com.example.demo.dto.Rate;
 import com.example.demo.model.Tarifa;
 
@@ -30,60 +33,54 @@ public class TarifaController {
 	"endDate":"2002-01-01 00:00:00.0"
 	 */
 	@Autowired
-	private TarifaRepo tarifaControlador;
-	@Autowired
-	private MapperComponent<Rate, Tarifa> serviciotarifas;
+	private RateService RateService;
+	@Autowired 
+	private MapperComponent<Rate, Tarifa> Mapper;
+	
 	
 	@GetMapping
-	public List<Rate> todos()
-	{
-		/**crear una entidad desde dentro para ver el json que muestra y usarlo
-		 * 
-		Tarifa t= new Tarifa();
-		Calendar c1 = Calendar.getInstance(),c2= Calendar.getInstance();
-		t.setFechaInicio(c1);
-		t.setFechaFin(c2);
-		t.setPrecio((float)20.00);
-		tarifaControlador.save(t);
-		*/
+	public Page<Rate> todos(
+			@RequestParam(value = "name", required = false) String name,
+			@RequestParam( value = "page", defaultValue = "0")int page, 
+			@RequestParam(value = "size", defaultValue="10") int size){
 		
-		List<Tarifa> lc = tarifaControlador.findAll();
-		List<Rate> lcDto = new ArrayList<Rate>();
-		for(Tarifa c: lc)
-		{
-			lcDto.add(serviciotarifas.toDto(c));
-		}
-		return  lcDto;		
-	}
+		return RateService.buscaTodosPage(name, PageRequest.of(page, size)) ;		
+	}	
 	
 	@GetMapping("/{id}")
-	public Rate busca(@PathVariable("id")Integer id)
-	{	
-		Tarifa c1= tarifaControlador.getOne(id);
-		//c1.
-		Rate c2= serviciotarifas.toDto(c1);
-		return c2;
-	}
-	@PutMapping
-	public Rate usoPut(@RequestBody Rate car) throws ParseException
-	{
-		tarifaControlador.save(serviciotarifas.toModel(car));		
-		return car;
-	}
-	@PostMapping
-	public Rate usoPost(@RequestBody Rate car) throws ParseException
-	{
-		tarifaControlador.save(serviciotarifas.toModel(car));		
-		return car;
-	}
-	@DeleteMapping("/{id}")
-	public Rate usoDelete(@PathVariable("id")Integer id)
-	{
-		Tarifa c1= tarifaControlador.getOne(id);
-		Rate c2= serviciotarifas.toDto(c1);
-		tarifaControlador.delete(tarifaControlador.getOne(id));
-		
-		return c2;
+	public ResponseEntity<Rate> busca(@PathVariable("id")Integer id){
+		return RateService.buscaPorId(id).
+				map(Mapper::toDto)
+				.map(ResponseEntity::ok)
+				.orElse(ResponseEntity.notFound().build());		 
 	}
 	
+	@PutMapping
+	public void usoPut(@RequestBody Rate car) throws ParseException{
+		Optional<Tarifa> a=RateService.buscaPorId(car.getId());
+		
+		//si hay algo puedo modificar --> ok
+		if(a.isPresent()) RateService.usaPutModifica(Mapper.toModel(car));
+		else		{
+			//si no hay nada no
+		}		
+	}
+	
+	@PostMapping
+	public ResponseEntity<Rate> usoPost(@RequestBody Rate car) throws ParseException{
+		
+		if(car.getId()==null) return ResponseEntity.notFound().build();
+		
+		Optional<Tarifa> a=RateService.buscaPorId(car.getId());
+		if(a.isPresent())	{return ResponseEntity.notFound().build();}		
+		else 	return RateService.usaPostCrea(Mapper.toModel(car))
+				.map(Mapper::toDto)
+				.map(ResponseEntity::ok)
+				.orElse(ResponseEntity.notFound().build());			
+	}
+	
+	@DeleteMapping("/{id}")
+	public void usoDelete(@PathVariable("id")Integer id){
+			RateService.usoDelete(id);
+	}
 }
