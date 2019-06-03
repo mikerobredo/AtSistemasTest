@@ -15,5 +15,6 @@ public interface RentalService {
 	public void usoDelete(Integer id);	
 	public Page<Rental> buscaTodosPage(String name,Pageable pageable);
 	public Optional<Alquiler> usaPostCrea(Alquiler libro);
+	//public long usaCount();
 	
 }

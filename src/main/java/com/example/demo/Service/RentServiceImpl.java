@@ -95,4 +95,9 @@ public class RentServiceImpl implements RentalService {
 		Page<Alquiler> lc = AlquilerRepo.findAll(p);		
 		return lc.map(x -> servicioAlquilers.toDto(x));		
 	}
+	/*
+	@Override
+	public long usaCount() {
+		return AlquilerRepo.count();
+	}*/
 }

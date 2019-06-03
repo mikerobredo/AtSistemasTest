@@ -99,4 +99,14 @@ public class AlquilerController {
 			RentService.usoDelete(id);
 	}
 	
+	/*  comentado por el uso de sql , me funcionaba en codigo en la base de datos pero no dentro del repo
+	@GetMapping("/count")
+	public long cuentaAlquileres()
+	{
+		//la sql no esta terminada,la he ido probando con funciones de sum y demas pero no he llegado a hacerla por el timpestamp
+		
+		return RentService.usaCount();
+	}*/
+	
+	
 }

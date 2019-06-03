@@ -11,6 +11,7 @@ import com.example.demo.Mapper.MapperComponent;
 import com.example.demo.Repo.ClienteRepo;
 import com.example.demo.dto.Client;
 import com.example.demo.model.Cliente;
+import com.example.demo.model.Coche;
 
 @Service
 public class ClientServiceImpl implements ClientService {
@@ -39,7 +40,15 @@ public class ClientServiceImpl implements ClientService {
 	}
 
 	@Override
-	public Optional<Cliente> usaPostCrea(Cliente a) {		
+	public Optional<Cliente> usaPostCrea(Cliente a) {	
+		
+		Optional<Cliente> c= ClienteRepo.findByDni(a.getDni());
+		if(c.isPresent())
+		{
+			//devuelvo un vacio para que no se modifique nada , ya que existe uno
+			Optional<Cliente> empty = Optional.empty();
+			return empty;
+		}
 		return ClienteRepo.findById(ClienteRepo.save(a).getIdPersona());		
 	}
 
