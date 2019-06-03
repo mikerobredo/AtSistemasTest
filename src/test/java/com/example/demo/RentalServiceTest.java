@@ -5,7 +5,6 @@ import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.when;
 
 import java.sql.Date;
-import java.util.List;
 import java.util.Optional;
 
 import org.junit.Test;
@@ -19,7 +18,6 @@ import com.example.demo.Service.RentServiceImpl;
 import com.example.demo.model.Alquiler;
 import com.example.demo.model.Cliente;
 import com.example.demo.model.Coche;
-import com.example.demo.model.Tarifa;
 
 @RunWith(value = MockitoJUnitRunner.class)
 public class RentalServiceTest {
@@ -33,10 +31,6 @@ public class RentalServiceTest {
 	public void testBusRentalPorId() {
 		//given
 		Integer i = 1;
-		String s="Juan";
-		String p="2001";
-		List<Alquiler> a= null;
-		List<Tarifa> b=null;
 		double d=5;
 		@SuppressWarnings("deprecation")
 		Date d1 = new Date(1,1,1);
