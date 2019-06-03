@@ -9,11 +9,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
 @Entity
+@AllArgsConstructor
 public class Cliente {
+	public Cliente(){}
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer idPersona;
