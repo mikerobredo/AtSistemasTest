@@ -10,11 +10,14 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
 @Entity
+@AllArgsConstructor
 public class Alquiler {
+	public Alquiler() {}
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
